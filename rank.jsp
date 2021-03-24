@@ -5,6 +5,9 @@
 Class.forName("com.mysql.jdbc.Driver");
 Connection con = DriverManager.getConnection("jdbc:mysql://localhost/training?serverTimezone=UTC&useSSL=false","root","비밀번호");
 PreparedStatement statement = con.prepareStatement("select id,first_name,age,gender, rank() over(order by age desc) 'rank' from person where id ='1'");
+//PreparedStatement statement = con.prepareStatement("select id,first_name,age,gender, rank() over(partition by 소속 order by age desc) 'rank' from person where id ='1'");
+// 소속 랭킹 확인
+
 System.out.println(statement);
 ResultSet rs = statement.executeQuery();
 if(rs.next()){
