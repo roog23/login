@@ -3,7 +3,7 @@
 
 <%
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/hometraining?serverTimezone=UTC&useSSL=false","root","root");
+        Connection con = DriverManager.getConnection("jdbc:mysql");
         PreparedStatement statement = con.prepareStatement("select * from members where id=?);
 
         statement.setString(1, request.getParameter("userId"));
