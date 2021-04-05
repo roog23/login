@@ -2,20 +2,18 @@
     pageEncoding="UTF-8" import="java.sql.*"%>
 
 <%
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection("jdbc:mysql://localhost/user?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true&useSSL=false","root","비밀번호");
-	PreparedStatement statement = con.prepareStatement("select * from usertable where id=? and pw=?");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/hometraining?serverTimezone=UTC&useSSL=false","root","root");
+        PreparedStatement statement = con.prepareStatement("select * from members where id=? and pwd=?");
 
-	statement.setString(1, request.getParameter("userId"));
-	statement.setString(2, request.getParameter("userPassword"));
-	System.out.println(statement);
-	ResultSet rs = statement.executeQuery();
+        statement.setString(1, request.getParameter("userId"));
+        statement.setString(2, request.getParameter("userPassword"));
 
-	if(rs.next()){
-		response.getWriter().write(rs.getString(1)+","+rs.getString(2));
-	} else{
-		response.getWriter().write("error");
-	}
-	con.close();
-
+        ResultSet rs = statement.executeQuery();
+        if(rs.next()){
+                response.getWriter().write(rs.getString(1)+","+rs.getString(2)+","+rs.getString(3)+","+rs.getString(4)+","+rs.getString(5)+","+rs.getString(6));
+        } else{
+                response.getWriter().write("error");
+        }
+        con.close();
 %>
