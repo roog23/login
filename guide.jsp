@@ -3,7 +3,7 @@
  
 <%
 Class.forName("com.mysql.jdbc.Driver");
-Connection con = DriverManager.getConnection("jdbc:mysql://localhost/guide?serverTimezone=UTC&useSSL=false","root","비밀번호");
+Connection con = DriverManager.getConnection("jdbc:mysql");
 PreparedStatement statement = con.prepareStatement("select * from view where name='푸쉬업'");
 System.out.println(statement);
 ResultSet rs = statement.executeQuery();
