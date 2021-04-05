@@ -7,7 +7,7 @@
         PreparedStatement statement = con.prepareStatement("select * from members where id=? and pwd=?");
 
         statement.setString(1, request.getParameter("userId"));
-        statement.setString(2, request.getParameter("userPassword"));
+        statement.setString(2, request.getParameter("userPwd"));
 
         ResultSet rs = statement.executeQuery();
         if(rs.next()){
